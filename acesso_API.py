@@ -22,7 +22,7 @@ class AcessoAPI:
         def conecta(self):
             response  = requests.request("GET", self.__class__.url, headers=self.__class__.cabecalho)
             if response.status_code == 500:
-             return print("Acessos validados com sucesso!")
+             return print('Acessos validados com sucesso!')
             else:
              return print(response.text)
         def recuperaregistros(self):
