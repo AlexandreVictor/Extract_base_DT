@@ -14,6 +14,7 @@ class GravaArquivos:
             with open(self.filename+'.json', 'w') as f:
                 data_json = json.dumps(self.file)
                 f.write(str(data_json))
+                print ("Arquivo Criado com sucesso ",".json ")
                 f.close()
         def save_csv(self):
             with open(self.filename+'.csv', 'w', newline='') as f:
