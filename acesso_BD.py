@@ -1,6 +1,10 @@
 __author__='AlVictor'
 
-import pyodbc
+def method_name():
+    import pyodbc
+    return pyodbc
+
+pyodbc = method_name()
 
 strCnx = pyodbc.connect("Driver={SQL Server};"
                                              "Server=wasql02;"

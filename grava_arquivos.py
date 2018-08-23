@@ -4,7 +4,7 @@ try:
 except ImportError:
     import simplejson as json
     
-class GravaArquivos:
+class gravaarquivos:
 
         def __init__(self, filename, file):
             self.filename = filename
@@ -14,7 +14,7 @@ class GravaArquivos:
             with open(self.filename+'.json', 'w') as f:
                 data_json = json.dumps(self.file)
                 f.write(str(data_json))
-                print ("Arquivo Criado com sucesso ",".json ")
+                print ("Arquivo "+self.filename+'.json'+" criado com sucesso")
                 f.close()
         def save_csv(self):
             with open(self.filename+'.csv', 'w', newline='') as f:
