@@ -1,10 +1,12 @@
+__author__='AlVictor'
+
 import csv
 try:
     import json
 except ImportError:
     import simplejson as json
     
-class gravaarquivos:
+class GravaArquivos:
 
         def __init__(self, filename, file):
             self.filename = filename

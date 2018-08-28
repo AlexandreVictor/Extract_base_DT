@@ -2,7 +2,7 @@ __author__='AlVictor'
 
 import requests
 import simplejson as json
-from grava_arquivos  import gravaarquivos
+from grava_arquivos  import GravaArquivos
 
 class AcessoAPI:
 
@@ -44,7 +44,7 @@ class AcessoAPI:
                          self.__class__.pagenumber += 1
             else:
                 return print("Não existem dados")
-            gravar = gravaarquivos(self.nomearquivo,self.__class__.dados_py)
+            gravar = GravaArquivos(self.nomearquivo,self.__class__.dados_py)
             gravar.save_json()
 
             return None
