@@ -27,6 +27,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Main.py" />
+    <Compile Include="grava_banco.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="old\Call_Acesso.py" />
     <Compile Include="old\Call_Acessos - 2.py" />
     <Compile Include="old\principal.py" />

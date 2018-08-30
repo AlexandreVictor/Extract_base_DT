@@ -1,5 +1,8 @@
-import os
+import datetime
+import time
 
-for arquivos in os.listdir(os.path.dirname(os.path.realpath(__file__))):
-        print (arquivos)
-#print(os.path.dirname(os.path.realpath(__file__)))
+t = datetime.datetime.now()
+time.sleep(5)
+print(datetime.datetime.now())
+ss = datetime.datetime.strptime(t,'%H:%M:%S')
+print(ss)

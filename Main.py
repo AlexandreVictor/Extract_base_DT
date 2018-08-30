@@ -3,40 +3,45 @@ __author__='AlVictor'
 import datetime
 import time
 import os
-from acesso_API import AcessoAPI
-from leitor_arquivos import LeitorArquivos
+from datetime import timedelta
+from acesso_API   import AcessoAPI
+from grava_banco  import GravaBanco
 
-#onde estão todos os arquivos do programa 
-nomediretorio = os.path.dirname(os.path.realpath(__file__))
 
 #string_date = input("Insira a Data Inicial: ")
-string_date = "2018-08-01 00:00:00"
+string_date = "2018-08-30 17:00:00"
 format = "%Y-%m-%d %H:%M:%S"
 datainicio = datetime.datetime.strptime(string_date, format)
 eph_dtinicio = int(time.mktime(time.strptime(string_date, '%Y-%m-%d %H:%M:%S')) - time.timezone)
 
+t = datainicio
+s = datetime.datetime.now()
+ss = (s-t)
+
 
 #string_date = input("Insira a Data Final:")
-string_date = "2018-08-01 23:59:59"
+string_date = "2018-08-29 23:59:59"
 format = "%Y-%m-%d %H:%M:%S"
 datafim = datetime.datetime.strptime(string_date, format)
 eph_dtfim = int(time.mktime(time.strptime(string_date, '%Y-%m-%d %H:%M:%S')) - time.timezone)
 
 
-nomearquivo = ("Extract_Atendimento_"+str(datainicio)+"_"+str(datafim)).replace(' ','_').replace(':','')
-
-print(nomearquivo)
-print(nomediretorio)
-#acessoAPI = AcessoAPI(eph_dtinicio, eph_dtfim, nomearquivo)
-
-#acessoAPI.conecta()
-
-#acessoAPI.recuperaregistros()
 
 
-leitorarquivos = LeitorArquivos(nomearquivo,nomediretorio)
-leitorarquivos.leitor()
+#Chama Class e passa os parametros
+acessoAPI = AcessoAPI(eph_dtinicio, eph_dtfim)
+#Verifica se a API está disponivel
+acessoAPI.conecta()
+#Recupera os dados da API
+dadosJson = acessoAPI.recuperaregistros()
 
-
+#Chama Class e passa os parametros
+gravabanco = GravaBanco(dadosJson)
+#Chama o metodo de leitura do .json
+queryString = gravabanco.leitor()
+#Aqui os dados são gravados diretamente no banco
+gravabanco.insertdados(queryString)
 
 print("Rotina Finalizada")
+print(datetime.datetime.now())
+
